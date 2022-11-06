@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 4</title>
+        <style>
+            #divDropdown {
+                position: relative;
+                display: inline-block;
+            }
+            #divDropdownContent {
+                position: absolute;
+                display: none;
+            }
+            img {
+                border-color: white;
+                border-style: solid;
+            }
+            img#imgLochNessSmall {
+                border-width: 2px;
+            }
+            img#imgLochNessLarge {
+                border-width: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Loch Ness</h1>
+            <p><em>Mouse over the thumbnail to see the full image image of Loch Ness</em></p>
+        </div>
+        <div id="divDropdown">
+            <img id="imgLochNessSmall" src="lochness.jpg" alt="Loch Ness" width="120" height="80">
+            <div id="divDropdownContent">
+                <img id="imgLochNessLarge" src="lochness.jpg" alt="Loch Ness" width="600" height="400">
+            </div>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let divDropdown = document.getElementById("divDropdown");
+                divDropdown.addEventListener("mouseover", function () {
+                    let divDropdownContent = document.getElementById("divDropdownContent");
+                    divDropdownContent.style.display = "block";
+                    let imgLochNessSmall = document.getElementById("imgLochNessSmall");
+                    imgLochNessSmall.style.opacity = "0.3";
+                    document.body.style.backgroundColor = "rgba(0,0,0,0.7)";
+                });
+
+                divDropdown.addEventListener("mouseout", function () {
+                    let divDropdownContent = document.getElementById("divDropdownContent");
+                    divDropdownContent.style.display = "none";
+                    let imgLochNessSmall = document.getElementById("imgLochNessSmall");
+                    imgLochNessSmall.style.opacity = "1";
+                    document.body.style.backgroundColor = "rgba(0,0,0,0)";
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 4</title>
+    </head>
+    <body>
+        <div>
+            <h1>Capital City</h1>
+            <p>Country: <input id="tbxCountry" type="text"></p>
+            <p><input id="btnSubmit" type="button" value="Submit"></p>
+            <div id="divContent">
+                &nbsp;
+            </div>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let button = document.getElementById("btnSubmit");
+                button.addEventListener("click", function () {
+                    let tbxCountry = document.getElementById("tbxCountry");
+                    let country = tbxCountry.value;
+                    let capital = "";
+                    let xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState === 4 && this.status === 200) {
+                            let jsonFileContents = this.responseText;
+                            let jsonObject = JSON.parse(jsonFileContents);
+                            for (let count = 0; count < jsonObject.length; count++) {
+                                if (country === jsonObject[count].country) {
+                                    capital = jsonObject[count].capital;
+                                }
+                            }
+                            let searchResult = "";
+                            if (capital === "") {
+                                searchResult = "<p>Unable to find \"" + country + "\"!</p>";
+                            } else {
+                                searchResult = "<p>The capital city of " + country + " is " + capital + "!</p>";
+                            }
+                            let divContent = document.getElementById("divContent");
+                            divContent.innerHTML = searchResult;
+                        }
+                    };
+                    xhttp.open("GET", "capitals.json", true);
+                    xhttp.send();
+                });
+            });
+        </script>
+    </body>
+</html>

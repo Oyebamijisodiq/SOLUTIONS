@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 1</title>
+        <style>
+            :fullscreen {
+                background-color: navy;
+                color: yellow
+            }
+            :fullscreen a {
+                color: lightblue;
+            }
+
+            div#divTopRight {
+                padding: 6px;
+                position: fixed;
+                top: 0px;
+                right: 0px;
+            }
+            html {
+                background-color: yellow;
+                color: navy;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div id="divTopRight">
+                <a id="ancMode" href="javascript:void(0)">&nbsp;</a></div>
+            <h1 id="heading1">&nbsp;</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin 
+                id lectus a fermentum. Duis sed dictum lorem. Sed consequat metus pharetra risus 
+                auctor, sit amet ultricies nulla iaculis. Ut volutpat massa et egestas tempor. Nunc 
+                quis turpis eget ante finibus consectetur. Maecenas egestas ac ipsum non commodo. 
+                Quisque vehicula non nisi et ultricies. Etiam non lacinia turpis. Lorem ipsum dolor 
+                sit amet, consectetur adipiscing elit. Integer velit diam, posuere quis elementum 
+                sit amet, ullamcorper tempus ipsum. Phasellus sed luctus massa.</p>
+            <p>Phasellus at nibh fermentum, scelerisque mauris non, posuere massa. Praesent 
+                ac condimentum est, ut mollis enim. Proin in nibh ac nunc fermentum iaculis sodales 
+                eget metus. Duis vel maximus enim. Vestibulum quis felis tellus. Integer sed ipsum 
+                neque. Cras sed massa vel nulla malesuada placerat vitae nec mi. Fusce tincidunt 
+                sit amet urna at finibus. Vestibulum ut turpis at purus pulvinar rutrum vel vel 
+                sem. Donec sed nibh euismod, lobortis augue at, tristique libero. Praesent in elit 
+                eget velit tincidunt commodo. Curabitur et quam sit amet lorem cursus tincidunt 
+                vitae ut lorem. Phasellus tellus tortor, posuere at lacus eget, convallis egestas 
+                leo. Donec euismod, leo ut consequat lobortis, mauris sapien hendrerit nulla, eu 
+                faucibus sem ligula eget nisl.</p>
+            <p>Pellentesque lacinia pulvinar iaculis. Aliquam risus mauris, congue eget rhoncus 
+                sed, dictum facilisis lacus. Aenean urna sapien, bibendum a luctus ac, volutpat 
+                ac lectus. Nam sollicitudin ex eu justo aliquet efficitur consequat in felis. Morbi 
+                in blandit nunc, sed malesuada orci. Class aptent taciti sociosqu ad litora torquent 
+                per conubia nostra, per inceptos himenaeos. Etiam in hendrerit tellus. In venenatis 
+                consectetur felis, quis fermentum purus suscipit et. Fusce tincidunt nec ante ultricies 
+                mattis.</p>
+            <p>Quisque sollicitudin ullamcorper risus, congue accumsan sapien fermentum et. 
+                Maecenas laoreet nisi nec rhoncus varius. Sed tempus ac leo in malesuada. Suspendisse 
+                tempor urna metus, eget placerat lorem ornare eu. Integer elementum gravida est 
+                eget luctus. Morbi consequat iaculis magna id consectetur. Pellentesque molestie 
+                metus porta libero faucibus, eget maximus justo maximus. Fusce ut scelerisque orci. 
+                Fusce sed pellentesque erat. Donec nisl libero, rutrum id blandit eu, tristique 
+                vitae est. Aliquam vehicula tristique diam eget sollicitudin.</p>
+            <p>Aenean urna lorem, tincidunt in viverra sed, tempor eu velit. In condimentum 
+                sapien dapibus magna ultrices posuere. Suspendisse feugiat mattis elit, sit amet 
+                dapibus ex eleifend non. Ut id scelerisque mi, at rhoncus augue. Aenean sit amet 
+                porta dui, eget faucibus metus. In hac habitasse platea dictumst. Fusce luctus lectus 
+                id ultrices sodales. Phasellus tincidunt ligula quis orci convallis volutpat. Vivamus 
+                hendrerit nec ex eget feugiat. Nullam nec rutrum purus, a fringilla nisi. Nullam 
+                auctor tincidunt nibh, id placerat diam ultrices sed. In eu nulla magna. Etiam eget 
+                luctus mi. Donec in augue id justo commodo tristique. Mauris viverra leo diam, lobortis 
+                imperdiet lorem tempus ac. Cras in orci at arcu luctus mollis.</p>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let heading1 = document.getElementById("heading1");
+                let ancMode = document.getElementById("ancMode");
+                if (window.innerHeight === screen.height) {
+                    heading1.innerHTML = "Full Screen Mode";
+                    ancMode.innerHTML = "Normal Screen";
+                } else {
+                    heading1.innerHTML = "Normal Screen";
+                    ancMode.innerHTML = "Full Screen Mode";
+                }
+
+                ancMode.addEventListener("click", function () {
+                    let elem = document.documentElement;
+                    let heading1 = document.getElementById("heading1");
+                    let ancMode = document.getElementById("ancMode");
+                    if (window.innerHeight === screen.height
+                            && window.innerWidth === screen.width) {
+                        document.exitFullscreen();
+                        heading1.innerHTML = "Normal Screen";
+                        ancMode.innerHTML = "Full Screen Mode";
+                    } else {
+                        elem.requestFullscreen();
+                        heading1.innerHTML = "Full Screen";
+                        ancMode.innerHTML = "Normal Screen Mode";
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

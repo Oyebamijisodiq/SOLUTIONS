@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 3</title>
+        <style>
+            div#divResponsive p:first-of-type {
+                font-style: normal;
+                margin-top: 0px;
+            }
+
+            div#divResponsive {
+                column-count: 4;
+                column-gap: 40px;
+                column-rule-style: solid;
+                column-rule-width: 1px;
+            }
+
+            @media screen and (max-width: 900px) {
+                div#divResponsive {
+                    column-count: 2;
+                    column-gap: 40px;
+                    column-rule-style: solid;
+                    column-rule-width: 1px;
+                }
+            }
+
+            @media screen and (max-width: 600px)
+            {
+                div#divResponsive {
+                    column-count: 1;
+                    column-gap: 40px;
+                    column-rule-style: solid;
+                    column-rule-width: 1px;
+
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Responsive Web</h1>
+            <div id="divResponsive">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper sit amet 
+                    ex eu fringilla. Ut scelerisque elit quis malesuada vulputate. Vestibulum ex 
+                    lorem, consectetur eget laoreet nec, convallis ut erat. Duis in sem nec ligula 
+                    congue feugiat sit amet ut nibh. Aenean vitae arcu vitae nibh tincidunt dictum 
+                    in eget velit. Nunc aliquet maximus turpis at pretium. Phasellus rutrum ante 
+                    elit, vitae convallis lorem pretium nec. Maecenas vel sapien ultrices, viverra 
+                    lectus ut, gravida felis. Vivamus at tempor arcu, et tincidunt sem. Cras tincidunt 
+                    vestibulum mi, ut porttitor mi viverra fermentum. Sed condimentum quam et risus 
+                    consectetur, vitae aliquam lacus imperdiet. Mauris dolor sem, porta ac cursus 
+                    id, pharetra eu est. Proin elit metus, consectetur et tortor ut, ultricies imperdiet 
+                    erat. Nunc id convallis sapien, vel scelerisque eros. In in est sit amet augue 
+                    commodo dignissim vitae in tellus. Donec a elementum sem. Sed gravida diam nec 
+                    dolor tincidunt mattis a vitae elit. Pellentesque risus justo, varius elementum 
+                    nisi eu, tincidunt aliquam dolor. Nullam tristique lobortis mi, vel euismod 
+                    ex elementum eget. Quisque faucibus enim vehicula, ornare nisi sit amet, suscipit 
+                    purus. Sed hendrerit velit eget urna eleifend ultrices. Donec rhoncus ante finibus 
+                    purus hendrerit molestie blandit non augue. Nunc mattis, sapien semper consectetur 
+                    suscipit, elit purus dignissim dui, at laoreet nulla tellus et sapien. Nullam 
+                    placerat tortor felis, quis semper purus volutpat vitae.</p>
+            </div>
+        </div>
+    </body>
+</html>

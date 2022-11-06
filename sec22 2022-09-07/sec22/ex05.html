@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 5</title>
+        <script src="jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>Weather Report</h1>
+            <table id="tblCity">
+                <tr>
+                    <td>City:</td>
+                    <td><input type="text" id="tbxCity"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input id="btnSubmit" type="button" value="Submit"></td>
+                </tr>
+            </table>
+            <p id="parWeatherReport">&nbsp;</p>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $("#btnSubmit").click(function () {
+                    let city = $("#tbxCity").val();
+                    let url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=a884896abfd5f2b526fc08fa8474337c";
+                    $.getJSON(url, function (data) {
+                        let city = $("#tbxCity").val();
+                        let description = data.weather[0].description;
+                        let temperature = Math.round((data.main.temp - 273.15) * 10) / 10;
+                        $("#parWeatherReport").text("The current weather in " + city + " is " + description + ". " +
+                                "The temperature is " + temperature + "°C.");
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

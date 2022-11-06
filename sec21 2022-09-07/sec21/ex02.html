@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 2</title>
+        <style>
+            body {
+                background-image: url("sky.jpg");
+            }
+            div#divCentered {
+                left: 50%;
+                padding: 0px;
+                position: fixed;
+                top: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Flying Helicopter</h1>
+            <p>Use the arrow keys to fly the helicopter...</p>
+            <div id="divCentered">
+                <img id="image" src="helicopter.png" alt="Helicopter"/>
+            </div>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let image = document.getElementById("image");
+                let imageHeight = image.height;
+                let imageWidth = image.width;
+                let divCentered = document.getElementById("divCentered");
+                divCentered.style.height = imageHeight + "px";
+                divCentered.style.width = imageWidth + "px";
+                divCentered.style.marginTop = (-1 * imageHeight / 2) + "px";
+                divCentered.style.marginLeft = (-1 * imageWidth / 2) + "px";
+
+                document.addEventListener("keydown", function (e) {
+                    let divCentered = document.getElementById("divCentered");
+                    switch (e.which)
+                    {
+                        case 37:
+                            divCentered.style.marginLeft = (parseInt(divCentered.style.marginLeft) - 5) + "px";
+                            break;
+                        case 38:
+                            divCentered.style.marginTop = (parseInt(divCentered.style.marginTop) - 5) + "px";
+                            break;
+                        case 39:
+                            divCentered.style.marginLeft = (parseInt(divCentered.style.marginLeft) + 5) + "px";
+                            break;
+                        case 40:
+                            divCentered.style.marginTop = (parseInt(divCentered.style.marginTop) + 5) + "px";
+                            break;
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

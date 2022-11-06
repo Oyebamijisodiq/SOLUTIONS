@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 1</title>
+    </head>
+    <body>
+        <div>
+            <h1>Random Dice</h1>
+            <p><input id="btnRollDice" type="button" value="Roll Dice"></p>
+            <p><img id="imgDiceFace" alt="Dice Face" src="dice0.png" height="70" width="70"></p>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let button = document.getElementById("btnRollDice");
+                btnRollDice.addEventListener("click", function () {
+                    let randomInteger = Math.floor(Math.random() * 6) + 1;
+                    let imgDiceFace = document.getElementById("imgDiceFace");
+                    imgDiceFace.src = "dice" + randomInteger + ".png";
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 3</title>
+    </head>
+    <body>
+        <div>
+            <h1>Cities of the World</h1>            
+            <p>
+                <input id="btnAscending" type="button" value="Ascending">
+                <input id="btnDescending" type="button" value="Descending">
+                <input id="btnRandom" type="button" value="Random">
+            </p>
+            <div id="divContent">
+                &nbsp;
+            </div>
+        </div>
+        <script>
+            let cities = ["New York City", "London", "Paris", "Tokyo", "Los Angeles", "Beijing", "Hong Kong", "Chicago", "Singapore", "Shanghai"];
+
+            window.addEventListener("load", function () {
+                let btnAscending = document.getElementById("btnAscending");
+                btnAscending.addEventListener("click", function () {
+                    cities.sort();
+                    let listOfCities = "<p>Ascending Order:</p>";
+                    listOfCities += "<ul>";
+                    cities.forEach(function (city) {
+                        listOfCities += "<li>" + city + "</li>";
+                    });
+                    listOfCities += "</ul>";
+                    let divContent = document.getElementById("divContent");
+                    divContent.innerHTML = listOfCities;
+                });
+
+                let btnDescending = document.getElementById("btnDescending");
+                btnDescending.addEventListener("click", function () {
+                    cities.sort();
+                    cities.reverse();
+                    let listOfCities = "<p>Descending Order:</p>";
+                    listOfCities += "<ul>";
+                    cities.forEach(function (city) {
+                        listOfCities += "<li>" + city + "</li>";
+                    });
+                    listOfCities += "</ul>";
+                    let divContent = document.getElementById("divContent");
+                    divContent.innerHTML = listOfCities;
+                });
+
+                let btnRandom = document.getElementById("btnRandom");
+                btnRandom.addEventListener("click", function () {
+                    shuffle(cities);
+                    let listOfCities = "<p>Random Order:</p>";
+                    listOfCities += "<ul>";
+                    cities.forEach(function (city) {
+                        listOfCities += "<li>" + city + "</li>";
+                    });
+                    listOfCities += "</ul>";
+                    let divContent = document.getElementById("divContent");
+                    divContent.innerHTML = listOfCities;
+                });
+            });
+
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    let j = Math.floor(Math.random() * (i + 1));
+                    let temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        </script>
+    </body>
+</html>

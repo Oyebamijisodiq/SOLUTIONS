@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 5</title>
+    </head>
+    <body>
+        <div>
+            <h1>Color Picker</h1>
+            <p>Color: <input id="tbxColor" type="text"></p>
+            <p><input id="btnSubmit" type="button" value="Submit"></p>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let btnSubmit = document.getElementById("btnSubmit");
+                btnSubmit.addEventListener("click", function () {
+                    let tbxColor = document.getElementById("tbxColor");
+                    let color = tbxColor.value;
+                    document.body.style.backgroundColor = color;
+                });
+            });
+        </script>
+    </body>
+</html>

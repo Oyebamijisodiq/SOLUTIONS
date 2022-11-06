@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 5</title>
+        <script src="react.development.js"></script>
+        <script src="react-dom.development.js"></script>
+        <script src="babel.min.js"></script>
+    </head>
+    <body>
+        <div>                        
+            <div id="divContent"></div>        
+        </div>
+        <script type="text/babel">
+            class ColorPicker extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {color: ""};
+
+                    this.handleChange = this.handleChange.bind(this);
+                    this.handleSubmit = this.handleSubmit.bind(this);
+                }
+
+                handleChange(event) {
+                    this.setState({color: event.target.value});
+                }
+
+                handleSubmit(event) {
+                    document.body.style.backgroundColor = this.state.color;
+                    event.preventDefault();
+                }
+
+                render() {
+                    return (<form onSubmit={this.handleSubmit}>
+                        <h1>Color Picker</h1>
+                        <p>Color: <input type="text" value={this.state.value} onChange={this.handleChange} /></p>
+                        <p><input type="submit" value="Submit" /></p>
+                        </form>
+                        );
+                }
+            }
+    
+            let divContent = document.getElementById("divContent");
+            ReactDOM.render(<ColorPicker />, divContent);
+        </script>
+    </body>
+</html>

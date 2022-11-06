@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 4</title>
+        <style>
+            table, td {
+                border: thin black solid;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Table Generator</h1>
+            <p>Rows: <input id="tbxRows" type="text"></p>
+            <p>Columns: <input id="tbxColumns" type="text"></p>
+            <p><input id="btnSubmit" type="button" value="Submit"></p>
+            <div id="divContent">
+                &nbsp;
+            </div>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let btnSubmit = document.getElementById("btnSubmit");
+                btnSubmit.addEventListener("click", function () {
+                    let tbxRows = document.getElementById("tbxRows");
+                    rows = parseInt(tbxRows.value);
+                    let tbxColumns = document.getElementById("tbxColumns");
+                    columns = parseInt(tbxColumns.value);
+                    let table = "<table>";
+                    for (var rowCount = 1; rowCount <= rows; rowCount++) {
+                        table += "<tr>";
+                        for (var colCount = 1; colCount <= columns; colCount++) {
+                            table += "<td>Row " + rowCount + ", Column " + colCount + "</td>";
+                        }
+                        table += "</tr>";
+                    }
+                    table += "</table>";
+                    let divContent = document.getElementById("divContent");
+                    divContent.innerHTML = table;
+                });
+            });
+        </script>
+    </body>
+</html>

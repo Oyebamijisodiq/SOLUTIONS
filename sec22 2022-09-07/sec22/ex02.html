@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 2</title>
+        <script src="jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>Personal Details</h1>
+            <table id="tblPersonalDetails">
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" id="tbxName"></td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td><input type="text" id="tbxAge"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="button" value="Submit"></td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $("#tbxName").val("");
+                $("#tbxAge").val("");
+
+                $("#tbxAge").keypress(function (e) {
+                    if (String.fromCharCode(e.which).match(/[^0-9]/))
+                        return false;
+                });
+            });
+        </script>
+    </body>
+</html>

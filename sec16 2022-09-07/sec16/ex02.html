@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 2</title>
+    </head>
+    <body>
+        <div>
+            <h1>Age Finder</h1>
+            <p>Date of Birth: <input id="tbxDateOfBirth" type="text"></p>
+            <p><input id="btnSubmit" type="button" value="Submit"></p>
+            <div id="divContent">
+                &nbsp;
+            </div>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let btnSubmit = document.getElementById("btnSubmit");
+                btnSubmit.addEventListener("click", function () {
+                    let tbxDateOfBirth = document.getElementById("tbxDateOfBirth");
+                    let dateOfBirthString = tbxDateOfBirth.value;
+                    let dateParts = dateOfBirthString.split("/");
+                    let dateOfBirthDate = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+                    let divContent = document.getElementById("divContent");
+                    divContent.innerHTML = "Being born on " + dateOfBirthString + ", you are "
+                            + dateOfBirthDate.Age() + " years old!";
+                });
+            });
+
+            Date.prototype.Age = function ()
+            {
+                let todaysDate = new Date();
+                let dateOfBirth = this;
+                let age = todaysDate.getFullYear() - dateOfBirth.getFullYear();
+                let monthsDifference = todaysDate.getMonth() - dateOfBirth.getMonth();
+                if (monthsDifference < 0 || (monthsDifference === 0 && todaysDate.getDate() < dateOfBirth.getDate()))
+                {
+                    age--;
+                }
+                return age;
+            };
+        </script>
+    </body>
+</html>

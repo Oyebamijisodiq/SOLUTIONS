@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 1</title>
+    </head>
+    <body>
+        <div>
+            <h1>Cities of Europe</h1>            
+            <p>
+                <input id="btnFrance" type="button" value="France">
+                <input id="btnGermany" type="button" value="Germany">
+                <input id="btnSpain" type="button" value="Spain">
+            </p>
+            <div id="divContent">
+                &nbsp;
+            </div>
+        </div>
+        <script>
+            let cities = ["New York City", "London", "Paris", "Tokyo", "Los Angeles", "Beijing", "Hong Kong", "Chicago", "Singapore", "Shanghai"];
+
+            window.addEventListener("load", function () {
+                let btnAscending = document.getElementById("btnFrance");
+                btnAscending.addEventListener("click", function () {
+                    let xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState === 4 && this.status === 200) {
+                            let txtFileContents = this.responseText;
+                            let divContent = document.getElementById("divContent");
+                            divContent.innerHTML = "<pre>" + txtFileContents + "</pre>";
+                        }
+                    };
+                    xhttp.open("GET", "france.txt", true);
+                    xhttp.send();
+                });
+
+                let btnDescending = document.getElementById("btnGermany");
+                btnDescending.addEventListener("click", function () {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState === 4 && this.status === 200) {
+                            let txtFileContents = this.responseText;
+                            let divContent = document.getElementById("divContent");
+                            divContent.innerHTML = "<pre>" + txtFileContents + "</pre>";
+                        }
+                    };
+                    xhttp.open("GET", "germany.txt", true);
+                    xhttp.send();
+                });
+
+                let btnRandom = document.getElementById("btnSpain");
+                btnRandom.addEventListener("click", function () {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState === 4 && this.status === 200) {
+                            let txtFileContents = this.responseText;
+                            let divContent = document.getElementById("divContent");
+                            divContent.innerHTML = "<pre>" + txtFileContents + "</pre>";
+                        }
+                    };
+                    xhttp.open("GET", "spain.txt", true);
+                    xhttp.send();
+                });
+            });
+        </script>
+    </body>
+</html>

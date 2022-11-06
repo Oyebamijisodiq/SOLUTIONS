@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 4</title>
+    </head>
+    <body>
+        <div>
+            <h1>Grade Finder</h1>
+            <p>Exam Mark: <input id="tbxExamMark" type="text"></p>
+            <p><input id="btnSubmit" type="button" value="Submit"></p>
+            <div id="divContent">
+                &nbsp;
+            </div>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let btnSubmit = document.getElementById("btnSubmit");
+                btnSubmit.addEventListener("click", function () {
+                    if (validSubmission()) {
+                        let tbxExamMark = document.getElementById("tbxExamMark");
+                        let examMark = parseInt(tbxExamMark.value);
+                        let grade = "";
+                        if (examMark >= 90) {
+                            grade = "A1";
+                        } else if (examMark >= 80) {
+                            grade = "A2";
+                        } else if (examMark >= 70) {
+                            grade = "A3";
+                        } else if (examMark >= 60) {
+                            grade = "B1";
+                        } else if (examMark >= 50) {
+                            grade = "B2";
+                        } else if (examMark >= 40) {
+                            grade = "C";
+                        } else if (examMark >= 30) {
+                            grade = "D";
+                        } else if (examMark >= 1) {
+                            grade = "E";
+                        } else {
+                            grade = "N";
+                        }
+                        resultantGrade = "";
+                        if (grade === "A1" || grade === "A2" || grade === "A3" || grade === "E" || grade === "N") {
+                            resultantGrade = "<p>With an exam mark of " + examMark + " you achieved an " + grade + " grade!</p>";
+                        } else {
+                            resultantGrade = "<p>With an exam mark of " + examMark + " you achieved a " + grade + " grade!</p>";
+                        }
+                        let divContent = document.getElementById("divContent");
+                        divContent.innerHTML = resultantGrade;
+                    }
+                });
+
+                function validSubmission() {
+                    let tbxExamMark = document.getElementById("tbxExamMark");
+                    let examMark = tbxExamMark.value;
+                    let fail = "";
+                    if (examMark === "") {
+                        fail += "You must enter your exam mark!\n";
+                    } else if (!(/^([0-9]|[1-9][0-9]|100)$/).test(examMark)) {
+                        fail += "\'" + examMark + "\' is not a valid exam mark!\n";
+                        fail += "(Your exam mark must be an integer between 0 and 100)\n";
+                    }
+                    if (fail !== "") {
+                        alert(fail);
+                        return false;
+                    }
+                    return true;
+                }
+            });
+        </script>
+    </body>
+</html>

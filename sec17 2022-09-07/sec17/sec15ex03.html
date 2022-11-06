@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 5</title>
+    </head>
+    <body>
+        <div>
+            <h1>Astrological Star Sign</h1>
+            <p>Date of Birth: <input id="tbxDateOfBirth" type="text"></p>
+            <p><input id="btnSubmit" type="button" value="Submit"></p>
+            <div id="divContent">
+                &nbsp;
+            </div>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let btnSubmit = document.getElementById("btnSubmit");
+                btnSubmit.addEventListener("click", function () {
+                    if (validSubmission()) {
+                        let days = [21, 20, 22, 21, 22, 22, 24, 24, 24, 24, 23, 23];
+                        let signs = ["Aquarius", "Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn"];
+                        let tbxDateOfBirth = document.getElementById("tbxDateOfBirth");
+                        let dateOfBirthString = tbxDateOfBirth.value;
+                        let dateParts = dateOfBirthString.split("/");
+                        let dateOfBirthDate = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+                        let month = dateOfBirthDate.getMonth();
+                        let day = dateOfBirthDate.getDate();
+                        if (month === 0 && day <= 20) {
+                            month = 11;
+                        } else if (day < days[month]) {
+                            month--;
+                        }
+                        starSign = signs[month];
+                        let divContent = document.getElementById("divContent");
+                        divContent.innerHTML = "<p>Being born on " + dateOfBirthString + ", your astrological star sign is " + starSign + "!</p>";
+                    }
+                });
+
+                function validSubmission() {
+                    let tbxDateOfBirth = document.getElementById("tbxDateOfBirth");
+                    let dateOfBirthString = tbxDateOfBirth.value;
+                    let fail = "";
+                    if (dateOfBirthString === "") {
+                        fail += "You must enter your date of birth!\n";
+                    } else if (!(/^([0-9]{2}\/[0-9]{2}\/[0-9]{4})$/.test(dateOfBirthString))) {
+                        fail += "\'" + dateOfBirthString + "\' is not a valid date of birth!\n";
+                        fail += "(Dates must be entered using the format dd/mm/yyyy)\n";
+                    }
+                    if (fail !== "") {
+                        alert(fail);
+                        return false;
+                    }
+                    return true;
+                }
+            });
+        </script>
+    </body>
+</html>

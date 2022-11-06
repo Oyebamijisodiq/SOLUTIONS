@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 3</title>
+        <script src="react.development.js"></script>
+        <script src="react-dom.development.js"></script>
+        <script src="babel.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>Simple Calculator</h1>
+            <div id="divContent">
+                &nbsp;
+            </div>        
+        </div>
+        <script type="text/babel">
+            class ArithmeticOperation extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {firstInteger: "", secondInteger: "", customMessage: ""};
+
+                    this.handleChange1 = this.handleChange1.bind(this);
+                    this.handleChange2 = this.handleChange2.bind(this);
+                    this.handleClick = this.handleClick.bind(this);
+                }
+
+                handleChange1(event) {
+                    this.setState({customMessage: ""});
+                    this.setState({firstInteger: event.target.value});
+                }
+                
+                handleChange2(event) {
+                    this.setState({customMessage: ""});
+                    this.setState({secondInteger: event.target.value});
+                }
+
+                handleClick(event) {
+                    let val = event.target.value;
+                    if (val === "Add") {
+                        this.setState({customMessage: this.state.firstInteger + " + " + this.state.secondInteger
+                            + " = " + (parseInt(this.state.firstInteger) + parseInt(this.state.secondInteger))
+                        });
+                    }
+                    else if (val === "Subtract") {
+                        this.setState({customMessage: this.state.firstInteger + " - " + this.state.secondInteger
+                            + " = " + (parseInt(this.state.firstInteger) - parseInt(this.state.secondInteger))
+                        });
+                    }
+                    else if (val === "Multiply") {
+                        this.setState({customMessage: this.state.firstInteger + " × " + this.state.secondInteger
+                            + " = " + (parseInt(this.state.firstInteger) * parseInt(this.state.secondInteger))
+                        });
+                    }
+                    else if (val === "Divide") {
+                        this.setState({customMessage: this.state.firstInteger + " ÷ " + this.state.secondInteger
+                            + " = " + Math.round(parseInt(this.state.firstInteger) / parseInt(this.state.secondInteger) * 1000) / 1000
+                        });
+                    };                  
+                }
+
+                handleSubmit(event) {
+                    event.preventDefault();
+                }
+
+                render() {
+                    return (<form onSubmit={this.handleSubmit}>
+                            <p>First Integer: <input type="text" value={this.state.value} onChange={this.handleChange1} /></p>
+                            <p>Second Integer: <input type="text" value={this.state.value} onChange={this.handleChange2} /></p>
+                            <p>
+                                <input type="submit" value="Add" onClick={this.handleClick} />&nbsp;
+                                <input type="submit" value="Subtract" onClick={this.handleClick} />&nbsp;
+                                <input type="submit" value="Multiply" onClick={this.handleClick} />&nbsp;
+                                <input type="submit" value="Divide" onClick={this.handleClick} />
+                            </p>
+                            <p>{this.state.customMessage}</p>
+                            </form>);
+                }
+            }
+
+            let divContent = document.getElementById("divContent");
+            ReactDOM.render(<ArithmeticOperation />, divContent);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 1</title>
+    </head>
+    <body>
+        <div>
+            <h1>Temperature Convertor</h1>
+            <p>Temperature: <input id="tbxTemperatureC" type="text"> &#xB0;Celsius</p>
+            <p><input id="btnConvertToFarenheit" type="button" value="Convert to Farenheit"></p>
+            <div id="divContent">
+                &nbsp;
+            </div>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let btnConvertToFarenheit = document.getElementById("btnConvertToFarenheit");
+                btnConvertToFarenheit.addEventListener("click", function () {
+                    let tbxTemperatureC = document.getElementById("tbxTemperatureC");
+                    let temperatureC = parseFloat(tbxTemperatureC.value);
+                    let divContent = document.getElementById("divContent");
+                    divContent.innerHTML = "<p>" + Math.round(temperatureC * 1000) / 1000 + "&#xB0;Celsius &#x3D; "
+                            + Math.round(celsiusToFahrenheit(temperatureC) * 1000) / 1000 + "&#xB0;Farenheit</p>";
+                });
+            });
+
+            function celsiusToFahrenheit(c) {
+                var f = c * 9 / 5 + 32;
+                return f;
+            }
+        </script>
+    </body>
+</html>

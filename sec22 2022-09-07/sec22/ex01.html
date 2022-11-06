@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 1</title>
+        <script src="jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>Login Form</h1>
+            <table id="tblLogin">
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" id="tbxUsername"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" id="tbxPassword">
+                        <a id="ancMode" href="javascript:void(0)">&nbsp;</a></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="button" value="Submit"></td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $("#tbxUsername").val("");
+                $("#tbxPassword").val("");
+                $("#ancMode").text("Show");
+
+                $("#ancMode").click(function () {
+                    if ($("#ancMode").text() === "Show") {
+                        $("#ancMode").text("Hide");
+                        $("#tbxPassword").prop("type", "text");
+                    } else {
+                        $("#ancMode").text("Show");
+                        $("#tbxPassword").prop("type", "password");
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

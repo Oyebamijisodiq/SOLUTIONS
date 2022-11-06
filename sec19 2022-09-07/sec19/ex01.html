@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 1</title>
+        <style>
+            div#divHeader {
+                background-color: black;
+                color: white;
+                position: fixed;
+                right: 0px;
+                text-align: center;
+                top: 0px;
+                width:100%;
+            }
+            div#divContent {
+                bottom: 0px;
+                overflow-y: scroll;
+                padding: 10px;
+                position: fixed;
+            }
+            div#divContent p {
+                font-style: normal;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="divHeader">
+            <h1>Fixed Header</h1>            
+        </div>
+        <div id="divContent" >
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit 
+                amet pretium risus. Cras varius justo eros, eu condimentum nisl interdum vitae. 
+                Vivamus sodales id massa a commodo. Vestibulum a consequat tellus. Nam mattis 
+                pellentesque massa sit amet scelerisque. Phasellus suscipit non urna eget lacinia. 
+                Mauris mi magna, iaculis eu massa non, gravida cursus purus. In ut faucibus 
+                massa. Vivamus pretium mauris sem, sed consectetur erat commodo eget. Maecenas 
+                facilisis accumsan ante vitae feugiat. Sed at risus non neque dictum mollis.</p>
+            <p>Curabitur accumsan tortor sem, eget faucibus nibh posuere sit amet. Suspendisse 
+                vitae felis porttitor, ultrices lectus ut, egestas libero. Sed dignissim massa 
+                tellus, malesuada tincidunt mi volutpat in. Pellentesque pretium tellus ut accumsan 
+                malesuada. Etiam in enim non massa porttitor convallis sit amet ac elit. Suspendisse 
+                volutpat dolor vitae tempus porttitor. Aliquam ligula nunc, blandit a cursus 
+                quis, blandit porta purus. Pellentesque ac ligula pulvinar, lobortis augue a, 
+                facilisis ligula. Vestibulum volutpat maximus nisi, at pellentesque nulla tincidunt 
+                consectetur. Integer non erat at ipsum dignissim consectetur sed sed mi. Praesent 
+                ornare neque sit amet risus pellentesque scelerisque.</p>
+            <p>Vestibulum sed dui justo. Quisque elementum ipsum sit amet risus suscipit, 
+                ac bibendum nisi blandit. Quisque suscipit nibh turpis, nec ultricies quam gravida 
+                eu. Sed aliquet dolor vitae dignissim vehicula. Ut vitae urna ante. Morbi nec 
+                nisl sit amet elit suscipit vestibulum sed lobortis tortor. Vestibulum accumsan 
+                viverra nunc, sit amet lobortis augue.</p>
+            <p>Etiam egestas ultrices mauris, eu varius nisl pellentesque id. Nulla cursus 
+                accumsan quam, sit amet vehicula metus condimentum ut. Nunc rutrum dictum neque. 
+                Sed ultricies odio neque, vitae euismod enim rutrum a. Morbi mauris leo, luctus 
+                et dapibus in, convallis ultrices quam. Nam at aliquam metus, sit amet consectetur 
+                velit. Aenean vitae justo ipsum. Curabitur rutrum malesuada cursus. Donec ac 
+                ante a est suscipit molestie sed nec urna.</p>
+            <p>In tempor volutpat maximus. Curabitur elementum pretium porttitor. Nunc tincidunt 
+                pharetra nulla commodo elementum. Maecenas rhoncus feugiat diam, ut placerat 
+                libero. In quis feugiat dui. Maecenas gravida ligula a massa dapibus bibendum. 
+                Duis quis felis id purus molestie gravida. Vivamus ullamcorper neque dictum 
+                arcu auctor, at condimentum mauris tincidunt. Maecenas mattis neque eu ex porta, 
+                ac porttitor leo porta. Vivamus posuere tincidunt elit, sit amet hendrerit purus 
+                luctus vitae. Vivamus quis risus sit amet quam molestie porta ut non nisl. Ut 
+                eu tellus a lorem commodo interdum quis eu ex. Ut nec purus pharetra, faucibus 
+                mauris sed, varius enim. Aenean eget auctor nisl.</p>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let divHeader = document.getElementById("divHeader");
+                let height = divHeader.clientHeight;
+                let divContent = document.getElementById("divContent");
+                divContent.style.top = height + "px";
+            });
+        </script>
+    </body>
+</html>

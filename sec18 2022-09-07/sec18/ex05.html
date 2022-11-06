@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 5</title>
+    </head>
+    <body>
+        <div>
+            <h1>Film Posters</h1>
+            <p>Film Title: <input id="tbxFilmTitle" type="text"></p>
+            <p><input id="btnSubmit" type="button" value="Submit"></p>
+            <p><img id="imgFilmPoster" src="movie.png" alt="Film Poster"/></p>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let button = document.getElementById("btnSubmit");
+                button.addEventListener("click", function () {
+                    let xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState === 4 && this.status === 200) {
+                            let jsonFileContents = this.responseText;
+                            let jsonObject = JSON.parse(jsonFileContents);
+                            searchResult = jsonObject.Poster;
+                            let imgFilmPoster = document.getElementById("imgFilmPoster");
+                            imgFilmPoster.src = searchResult;
+                        }
+                    };
+                    let tbxFilmTitle = document.getElementById("tbxFilmTitle");
+                    let filmTitle = encodeURI(tbxFilmTitle.value);
+                    let url = "https://www.omdbapi.com/?apikey=cc5d2a57&t=" + filmTitle;
+                    xhttp.open("GET", url, true);
+                    xhttp.send();
+                });
+            });
+        </script>
+    </body>
+</html>

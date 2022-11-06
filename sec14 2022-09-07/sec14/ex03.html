@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 3</title>
+    </head>
+    <body>
+        <div>
+            <h1>Simple Calculator</h1>
+            <p>First Integer: <input id="tbxInt1" type="text"></p>
+            <p>Second Integer: <input id="tbxInt2" type="text"></p>
+            <p>
+                <input id="btnAdd" type="button" value="Add">
+                <input id="btnSubtract" type="button" value="Subtract">
+                <input id="btnMultiply" type="button" value="Multiply">
+                <input id="btnDivide" type="button" value="Divide">
+            </p>
+            <div id="divContent">&nbsp;</div>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let btnAdd = document.getElementById("btnAdd");
+                btnAdd.addEventListener("click", function () {
+                    let textbox1 = document.getElementById("tbxInt1");
+                    let int1 = parseInt(textbox1.value);
+                    let textbox2 = document.getElementById("tbxInt2");
+                    let int2 = parseInt(textbox2.value);
+                    let sum = int1 + int2;
+                    let arithmeticOperation = "<p>" + int1 + " &#x2B; " + int2 + " &#x3D " + sum + "</p>";
+                    let divContent = document.getElementById("divContent");
+                    divContent.innerHTML = arithmeticOperation;
+                });
+
+                let btnSubtract = document.getElementById("btnSubtract");
+                btnSubtract.addEventListener("click", function () {
+                    let textbox1 = document.getElementById("tbxInt1");
+                    let int1 = parseInt(textbox1.value);
+                    let textbox2 = document.getElementById("tbxInt2");
+                    let int2 = parseInt(textbox2.value);
+                    let difference = int1 - int2;
+                    let arithmeticOperation = "<p>" + int1 + " &#x2212; " + int2 + " &#x3D " + difference + "</p>";
+                    let divContent = document.getElementById("divContent");
+                    divContent.innerHTML = arithmeticOperation;
+                });
+
+                let btnMultiply = document.getElementById("btnMultiply");
+                btnMultiply.addEventListener("click", function () {
+                    let textbox1 = document.getElementById("tbxInt1");
+                    let int1 = parseInt(textbox1.value);
+                    let textbox2 = document.getElementById("tbxInt2");
+                    let int2 = parseInt(textbox2.value);
+                    let product = int1 * int2;
+                    let arithmeticOperation = "<p>" + int1 + " &#xD7; " + int2 + " &#x3D " + product + "</p>";
+                    let divContent = document.getElementById("divContent");
+                    divContent.innerHTML = arithmeticOperation;
+                });
+
+                let btnDivide = document.getElementById("btnDivide");
+                btnDivide.addEventListener("click", function () {
+                    let textbox1 = document.getElementById("tbxInt1");
+                    let int1 = parseInt(textbox1.value);
+                    let textbox2 = document.getElementById("tbxInt2");
+                    let int2 = parseInt(textbox2.value);
+                    let quotient = Math.round(int1 / int2 * 1000) / 1000;
+                    let arithmeticOperation = "<p>" + int1 + " &#xF7; " + int2 + " &#x3D " + quotient + "</p>";
+                    let divContent = document.getElementById("divContent");
+                    divContent.innerHTML = arithmeticOperation;
+                });
+            });
+        </script>
+    </body>
+</html>

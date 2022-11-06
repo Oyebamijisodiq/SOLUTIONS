@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 2</title>
+        <style>
+            body {
+                background-color: black;
+                color: white;
+            }
+            div#divCentered {
+                left: 50%;
+                padding: 0px;
+                position: fixed;
+                top: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Planet Earth</h1>
+            <div id="divCentered">
+                <img id="imgEarth" src="earth.jpg" alt="Planet Earth" />
+            </div>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let imgEarth = document.getElementById("imgEarth");
+                let imgEarthHeight = imgEarth.height;
+                let imgEarthWidth = imgEarth.width;
+                let divCentered = document.getElementById("divCentered");
+                divCentered.style.height = imgEarthHeight + "px";
+                divCentered.style.width = imgEarthWidth + "px";
+                divCentered.style.marginTop = (-1 * imgEarthHeight / 2) + "px";
+                divCentered.style.marginLeft = (-1 * imgEarthWidth / 2) + "px";
+            });
+        </script>
+    </body>
+</html>
